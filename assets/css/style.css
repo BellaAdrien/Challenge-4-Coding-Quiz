@@ -20,12 +20,10 @@ display: none;
 
 }
 
-#intro-section{
+#intro-section, #question-section, #initial-section, #highscore-section {
     text-align: center;
 }
-#question-section{
-    text-align: center;
-}
-#qyestion-section{
+
+#question-section ul{
     list-style: none;
 }
