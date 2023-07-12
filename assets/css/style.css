@@ -1,0 +1,31 @@
+header{
+
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+header{
+    width: 50%;
+}
+
+header p{
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.hide{
+display: none;
+
+}
+
+#intro-section{
+    text-align: center;
+}
+#question-section{
+    text-align: center;
+}
+#qyestion-section{
+    list-style: none;
+}
