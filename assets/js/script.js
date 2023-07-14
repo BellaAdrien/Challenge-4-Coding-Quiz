@@ -16,29 +16,29 @@ var choicesEl = document.querySelectorAll(".choices")
 var questionIndex = 0
 var questionArray = [
     {
-        title: " What is JavaScript and what are its main uses in web development?",
-        choices: ["A", "B", "C", "D"],
+        title: " What is the correct way to declare a variable in JavaScript?",
+        choices: ["A. var = myVariable   ", "B", "C", "D"],
         answer: "B"
     },
 
     {
-        title: "How do you declare a variable in JavaScript ",
+        title: "How do you declare a variable in JavaScript? ",
         choices: ["A", "B", "c", "D"],
         answer: "A"
 
     },
     {
-        title: "q 3",
+        title: " What is the difference between "==" and "===" in JavaScript?",
         choices: ["A", "B", "C", "D"],
         answer: "D"
     },
     {
-        title: "q 4",
+        title: " What are functions in JavaScript, and how do you define and call them?",
         choices: ["A", "B", "C", "D"],
         answer: "B"
     },
     {
-        title: "q 5",
+        title: " How do you loop through an array in JavaScript and perform an action on each item?",
         choices: ["A", "B", "C", "D"],
         answer: "D"
     }
@@ -51,6 +51,36 @@ if (localStorage.getItem("users")){
 console.log(questionArray[questionIndex].title);
 var timeLeft = questionArray.length * 15
 
+// function checkAnswer() {
+//     // get selected list
+//     var selectedItem = document.getElementById(tags)};
+
+//     // check that an answer has been selected
+//     if (selectedItem == undefined) {
+//         alert("Please selected an answer!")
+//     return
+//  } else {
+//         // get user answer if form of text
+//         var userAns = selectedItem.innerHTML;
+//     }
+
+//     if (userAns == currentQuestion.answers[currentQuestion.correct]) {
+//         console.log("Correct! The answer is: " + userAns);
+//         // change color of selected item by changing className
+//         selectedItem.className = 'correct';
+//         // count the number of correct answers
+//         correctAns++;
+//         console.log(correctAns);
+//     } else {
+//         console.log("Wrong! The corrent answer is: " + currentQuestion.answers[currentQuestion.correct]);
+//         //change the background of the wrong answer
+//         selectedItem.className = 'wrong';
+//         //hightlight the right answer if the user got it wrong
+//         //change the class name of the correct answer
+//         ulTag.getElementsByTagName('li')[currentQuestion.correct].className = 'correct';
+
+//         console.log(currentQuestion.answers[currentQuestion.correct]);
+//     }
 /*
   1. hide intro section
   2. start timer
@@ -116,14 +146,16 @@ localStorage.setItem("users",JSON.stringify(users))
 initialSectionEl.classList.add("hide")
 highscoreSectionEl.classList.remove("hide")
 }
+function clearScores(){
 
+}
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-// gobackBtnEl.addEventListener("click",introSectionEl)
+gobackBtnEl.addEventListener("click",introSectionEl)
 
-// clearScoresEl.addEventListener("click", clear)
+clearScoresEl.addEventListener("click", clearScores)
 
 saveBtnEl.addEventListener("click", saveInitial)
 
