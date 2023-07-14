@@ -17,30 +17,30 @@ var questionIndex = 0
 var questionArray = [
     {
         title: " What is the correct way to declare a variable in JavaScript?",
-        choices: ["A. var = myVariable   ", "B", "C", "D"],
-        answer: "B"
+        choices: ["A. var = myVariable", "B. variable myVariable ", "C. var myVariable", "D. myVariable = var"],
+        answer: "C"
     },
 
     {
-        title: "How do you declare a variable in JavaScript? ",
-        choices: ["A", "B", "c", "D"],
-        answer: "A"
+        title: "Which of the following is an example of a JavaScript function declaration?",
+        choices: ["A.function = myFunction(){}", "B. myFunction = function(){}", "C.function myFunction(){}", "D. myFunction() = function {}"],
+        answer: "C"
 
     },
     {
-        title: " What is the difference between "==" and "===" in JavaScript?",
-        choices: ["A", "B", "C", "D"],
-        answer: "D"
-    },
-    {
-        title: " What are functions in JavaScript, and how do you define and call them?",
-        choices: ["A", "B", "C", "D"],
+        title: " What is the purpose of the "===" operator in JavaScript?",
+        choices: ["A. It assigns a value to a variable.", "B. It compares two values for equality, without type conversion.", "C. It checks if a value is greater than another value", "D. It concatenates two strings."],
         answer: "B"
     },
     {
-        title: " How do you loop through an array in JavaScript and perform an action on each item?",
-        choices: ["A", "B", "C", "D"],
-        answer: "D"
+        title: "How do you write a comment in JavaScript?",
+        choices: ["A. <!-- This is a comment -->", "B. /* This is a comment */", "C. // This is a comment //", "D. ** This is a comment **"],
+        answer: "B"
+    },
+    {
+        title: " What does the "push()" method do in JavaScript?",
+        choices: ["A. It removes an element from an array.", "B. It adds an element to the beginning of an array.", "C. It adds an element to the end of an array. ", "D. It reverses the order of elements in an array."],
+        answer: "C"
     }
 ]
 
