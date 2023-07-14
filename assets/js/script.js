@@ -1,14 +1,14 @@
 var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
-var gobackBtnEl= document.getElementById("go-back-btn")
-var clearScoresEl=document.getElementById("clear-scores")
+var gobackBtnEl = document.getElementById("go-back-btn")
+var clearScoresEl = document.getElementById("clear-scores")
 var questionSectionEl = document.getElementById("question-section")
-var scoreEl=document.getElementById("score")
+var scoreEl = document.getElementById("score")
 var titleEl = document.getElementById('title')
-var saveBtnEl=document.getElementById("save-btn")
-var initialsInput=document.getElementById("initials-input")
-var highscoreSectionEl=document.getElementById("highscore-section")
-var initialSectionEl=document.getElementById("initial-section")
+var saveBtnEl = document.getElementById("save-btn")
+var initialsInput = document.getElementById("initials-input")
+var highscoreSectionEl = document.getElementById("highscore-section")
+var initialSectionEl = document.getElementById("initial-section")
 console.log(highscoreSectionEl);
 console.log(initialSectionEl);
 var timerEl = document.getElementById('timer')
@@ -28,7 +28,7 @@ var questionArray = [
 
     },
     {
-        title: " What is the purpose of the "===" operator in JavaScript?",
+        title: " What is the purpose of the " === " operator in JavaScript?",
         choices: ["A. It assigns a value to a variable.", "B. It compares two values for equality, without type conversion.", "C. It checks if a value is greater than another value", "D. It concatenates two strings."],
         answer: "B"
     },
@@ -38,15 +38,15 @@ var questionArray = [
         answer: "B"
     },
     {
-        title: " What does the "push()" method do in JavaScript?",
+        title: " What does the push () method do in JavaScript?",
         choices: ["A. It removes an element from an array.", "B. It adds an element to the beginning of an array.", "C. It adds an element to the end of an array. ", "D. It reverses the order of elements in an array."],
         answer: "C"
     }
 ]
 
-var users=[]
-if (localStorage.getItem("users")){
-    users=JSON.parse(localStorage.getItem("users"))
+var users = []
+if (localStorage.getItem("users")) {
+    users = JSON.parse(localStorage.getItem("users"))
 }
 console.log(questionArray[questionIndex].title);
 var timeLeft = questionArray.length * 15
@@ -125,35 +125,35 @@ function showQuestions() {
 
 function nextQuestion(event) {
     var currentElement = event.target
-    if (currentElement.matches("button") && questionIndex<questionArray.length-1) {
+    if (currentElement.matches("button") && questionIndex < questionArray.length - 1) {
         questionIndex++
         showQuestions()
-    } else{ 
-initialSectionEl.classList.remove("hide")
-// highscoreSectionEl.classList.remove("hide")
-questionSectionEl.classList.add("hide")
-clearInterval(setIntervalId)
-scoreEl.textContent=timerEl.textContent
+    } else {
+        initialSectionEl.classList.remove("hide")
+        // highscoreSectionEl.classList.remove("hide")
+        questionSectionEl.classList.add("hide")
+        clearInterval(setIntervalId)
+        scoreEl.textContent = timerEl.textContent
+    }
 }
+function saveInitial() {
+    var userObject = {
+        initial: initialsInput.value,
+        score: scoreEl.textContent
+    }
+    users.push(userObject)
+    localStorage.setItem("users", JSON.stringify(users))
+    initialSectionEl.classList.add("hide")
+    highscoreSectionEl.classList.remove("hide")
 }
-function saveInitial(){
-var userObject={ 
-  initial:initialsInput.value,
-  score:scoreEl.textContent 
-}
-users.push(userObject)
-localStorage.setItem("users",JSON.stringify(users))
-initialSectionEl.classList.add("hide")
-highscoreSectionEl.classList.remove("hide")
-}
-function clearScores(){
+function clearScores() {
 
 }
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-gobackBtnEl.addEventListener("click",introSectionEl)
+gobackBtnEl.addEventListener("click", introSectionEl)
 
 clearScoresEl.addEventListener("click", clearScores)
 
