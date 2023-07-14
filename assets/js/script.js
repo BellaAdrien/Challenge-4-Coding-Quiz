@@ -1,8 +1,12 @@
 var startBtn = document.getElementById("start-btn")
 var introSectionEl = document.getElementById("intro-section")
-
+var gobackBtnEl= document.getElementById("go-back-btn")
+var clearScoresEl=document.getElementById("clear-scores")
 var questionSectionEl = document.getElementById("question-section")
+var scoreEl=document.getElementById("score")
 var titleEl = document.getElementById('title')
+var saveBtnEl=document.getElementById("save-btn")
+var initialsInput=document.getElementById("initials-input")
 var highscoreSectionEl=document.getElementById("highscore-section")
 var initialSectionEl=document.getElementById("initial-section")
 console.log(highscoreSectionEl);
@@ -12,33 +16,38 @@ var choicesEl = document.querySelectorAll(".choices")
 var questionIndex = 0
 var questionArray = [
     {
-        title: "q 1",
+        title: " What is JavaScript and what are its main uses in web development?",
         choices: ["A", "B", "C", "D"],
         answer: "B"
     },
 
     {
-        title: "q 2",
+        title: "How do you declare a variable in JavaScript ",
         choices: ["A", "B", "c", "D"],
         answer: "A"
 
     },
     {
         title: "q 3",
-        choices: ["c1", "c2", "c3", "c4"],
-        answer: "c4"
+        choices: ["A", "B", "C", "D"],
+        answer: "D"
     },
     {
         title: "q 4",
-        choices: ["c1", "c2", "c3", "c4"],
-        answer: "c2"
+        choices: ["A", "B", "C", "D"],
+        answer: "B"
     },
     {
         title: "q 5",
-        choices: ["c1", "c2", "c3", "c4"],
-        answer: "c4"
+        choices: ["A", "B", "C", "D"],
+        answer: "D"
     }
 ]
+
+var users=[]
+if (localStorage.getItem("users")){
+    users=JSON.parse(localStorage.getItem("users"))
+}
 console.log(questionArray[questionIndex].title);
 var timeLeft = questionArray.length * 15
 
@@ -91,21 +100,44 @@ function nextQuestion(event) {
         showQuestions()
     } else{ 
 initialSectionEl.classList.remove("hide")
-highscoreSectionEl.classList.remove("hide")
+// highscoreSectionEl.classList.remove("hide")
+questionSectionEl.classList.add("hide")
+clearInterval(setIntervalId)
+scoreEl.textContent=timerEl.textContent
 }
+}
+function saveInitial(){
+var userObject={ 
+  initial:initialsInput.value,
+  score:scoreEl.textContent 
+}
+users.push(userObject)
+localStorage.setItem("users",JSON.stringify(users))
+initialSectionEl.classList.add("hide")
+highscoreSectionEl.classList.remove("hide")
 }
 
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
+// gobackBtnEl.addEventListener("click",introSectionEl)
+
+// clearScoresEl.addEventListener("click", clear)
+
+saveBtnEl.addEventListener("click", saveInitial)
 
 
+// let highScoresList = []
 
-
-
-
-
+// function saveHighScore() {
+//     initials = initialsInput.value;
+//     score = timeLeft;
+//     let newHighScore = {
+//         initials,
+//         score
+//     }
+// }
 
 
 
