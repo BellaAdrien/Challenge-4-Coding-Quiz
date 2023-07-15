@@ -146,12 +146,20 @@ function nextQuestion(event) {
         clearInterval(setIntervalId)
         scoreEl.textContent = timerEl.textContent
     }
-    if (choice === questions[currentQuestion].correctAnswer) {
-        score++;
-        alert("Correct answer!");
-    } else {
-        alert("Wrong answer!");
+    var userAnswer={
+        answer: answerInput.value
     }
+
+    if (userAnswer(answerIndex) && answerIndex >= 0 && answerIndex < question.choices.length) {
+        if (answerIndex === question.correctAnswer) {
+          console.log("Correct answer!");
+          score++;
+        } else {
+          console.log("Wrong answer!");
+        }
+      } else {
+        console.log("Invalid answer!");
+      }
 
 }
 function saveInitial() {
