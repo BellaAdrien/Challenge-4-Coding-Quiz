@@ -147,11 +147,11 @@ function nextQuestion(event) {
         scoreEl.textContent = timerEl.textContent
     }
     if (choice === questions[currentQuestion].correctAnswer) {
-          score++;
-          alert("Correct answer!");
-        } else {
-          alert("Wrong answer!");
-        }
+        score++;
+        alert("Correct answer!");
+    } else {
+        alert("Wrong answer!");
+    }
 
 }
 function saveInitial() {
@@ -167,14 +167,19 @@ function saveInitial() {
 function clearScores() {
 
 }
+function returnTointroSection() {
+    document.getElementById("intro-section").style.display = "block"
+    document.getElementById("question-section").style.display="none"
+    document.getElementById("highscore-section").style.display="none"
+
+    console.log("return button clicked")
+
+}
 startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-gobackBtnEl.addEventListener("click", function(){
-  back("intro-section");  
-} 
-)
+gobackBtnEl.addEventListener("click", returnTointroSection)
 
 clearScoresEl.addEventListener("click", clearScores)
 
@@ -193,7 +198,6 @@ saveBtnEl.addEventListener("click", saveInitial)
 //         score
 //     }
 // }
-
 
 
 
