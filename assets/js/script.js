@@ -43,6 +43,17 @@ var questionArray = [
         answer: "C"
     }
 ]
+// function checkAnswer(event) {
+//     if (choice === questions[currentQuestion].correctAnswer) {
+//       score++;
+//       alert("Correct answer!");
+//     } else {
+//       alert("Wrong answer!");
+//     }
+
+
+
+
 
 var users = []
 if (localStorage.getItem("users")) {
@@ -135,6 +146,13 @@ function nextQuestion(event) {
         clearInterval(setIntervalId)
         scoreEl.textContent = timerEl.textContent
     }
+    if (choice === questions[currentQuestion].correctAnswer) {
+          score++;
+          alert("Correct answer!");
+        } else {
+          alert("Wrong answer!");
+        }
+
 }
 function saveInitial() {
     var userObject = {
@@ -153,11 +171,16 @@ startBtn.addEventListener("click", startQuiz)
 
 questionSectionEl.addEventListener("click", nextQuestion)
 
-gobackBtnEl.addEventListener("click", introSectionEl)
+gobackBtnEl.addEventListener("click", function(){
+  back("intro-section");  
+} 
+)
 
 clearScoresEl.addEventListener("click", clearScores)
 
 saveBtnEl.addEventListener("click", saveInitial)
+
+
 
 
 // let highScoresList = []
