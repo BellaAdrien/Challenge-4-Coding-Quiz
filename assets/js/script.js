@@ -13,6 +13,8 @@ console.log(highscoreSectionEl);
 console.log(initialSectionEl);
 var timerEl = document.getElementById('timer')
 var choicesEl = document.querySelectorAll(".choices")
+var answerEl = document.getElementById("answers")
+
 var questionIndex = 0
 var questionArray = [
     {
@@ -120,6 +122,7 @@ function countDown() {
 
 function showQuestions() {
     console.log(questionIndex)
+
     titleEl.textContent = questionArray[questionIndex].title
 
     choicesEl[0].textContent = questionArray[questionIndex].choices[0]
@@ -139,59 +142,56 @@ function nextQuestion(event) {
     if (currentElement.matches("button") && questionIndex < questionArray.length - 1) {
         questionIndex++
         showQuestions()
-    } else {
+} else {
         initialSectionEl.classList.remove("hide")
         // highscoreSectionEl.classList.remove("hide")
         questionSectionEl.classList.add("hide")
         clearInterval(setIntervalId)
         scoreEl.textContent = timerEl.textContent
     }
-    var userAnswer={
+    var userAnswer = {
         answer: answerInput.value
     }
+}
 
-    if (userAnswer(answerIndex) && answerIndex >= 0 && answerIndex < question.choices.length) {
-        if (answerIndex === question.correctAnswer) {
-          console.log("Correct answer!");
-          score++;
-        } else {
-          console.log("Wrong answer!");
+    // function checkAnswer(event) {
+    //     if (event.target.innerHTML === questionsArray[questionIndex].answer) {
+    //         score = score + 20
+
+    //     }
+    //     answerEl.textContent = "correct"
+    //     answerEl.textContent = "incorrect"
+    // }
+    function saveInitial() {
+        var userObject = {
+            initial: initialsInput.value,
+            score: scoreEl.textContent
         }
-      } else {
-        console.log("Invalid answer!");
-      }
-
-}
-function saveInitial() {
-    var userObject = {
-        initial: initialsInput.value,
-        score: scoreEl.textContent
+        users.push(userObject)
+        localStorage.setItem("users", JSON.stringify(users))
+        initialSectionEl.classList.add("hide")
+        highscoreSectionEl.classList.remove("hide")
     }
-    users.push(userObject)
-    localStorage.setItem("users", JSON.stringify(users))
-    initialSectionEl.classList.add("hide")
-    highscoreSectionEl.classList.remove("hide")
-}
-function clearScores() {
+    function clearScores() {
 
-}
-function returnTointroSection() {
-    document.getElementById("intro-section").style.display = "block"
-    document.getElementById("question-section").style.display="none"
-    document.getElementById("highscore-section").style.display="none"
+    }
+    function returnTointroSection() {
+        document.getElementById("intro-section").style.display = "block"
+        document.getElementById("question-section").style.display = "none"
+        document.getElementById("highscore-section").style.display = "none"
 
-    console.log("return button clicked")
+        console.log("return button clicked")
 
-}
-startBtn.addEventListener("click", startQuiz)
+    }
+    startBtn.addEventListener("click", startQuiz)
 
-questionSectionEl.addEventListener("click", nextQuestion)
+    questionSectionEl.addEventListener("click", nextQuestion)
 
-gobackBtnEl.addEventListener("click", returnTointroSection)
+    gobackBtnEl.addEventListener("click", returnTointroSection)
 
-clearScoresEl.addEventListener("click", clearScores)
+    clearScoresEl.addEventListener("click", clearScores)
 
-saveBtnEl.addEventListener("click", saveInitial)
+    saveBtnEl.addEventListener("click", saveInitial)
 
 
 
